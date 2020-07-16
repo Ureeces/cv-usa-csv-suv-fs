@@ -58,7 +58,24 @@ if(userDate === undefined) {
 // 6b. If command is "new" - display the new cases for the date entered.
 // 6c. Any other command is invalid, and we should inform user of
 //     incorrect input and show proper format.
+let consoleFeedback = "";
+switch(userCommand) {
+    case "total":
+        const totalCases = Math.floor(getTotalCases(userDate, covidTableData));
+        consoleFeedback = `Total covid-cases in USA for ${userDate} reached ${totalCases}`
+        break;
 
+    case "new":
+        const newCases = Math.floor(getNewCases(userDate, covidTableData));
+        consoleFeedback = `New covid-cases in USA for ${userDate} was ${newCases}`;
+        break;
+    
+    default:
+        consoleFeedback = "Command not recognized please enter 'total' or 'new'.";
+        break;
+}
+
+console.log(consoleFeedback);
 
 
 
